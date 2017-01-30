@@ -16,6 +16,8 @@ export default class Animation extends Component {
             screenX: 0,
             screenY: 0,
             count: 0,
+            width: 80,
+            height: 80,
             grow: false
         };
         this.generateBoxes = this.generateBoxes.bind(this);
@@ -48,26 +50,32 @@ export default class Animation extends Component {
         return boxes;
     }
     mouseBox (i) {
-        var color = randomColor({luminosity: 'light', hue: 'blue'});
+        var color = randomColor({luminosity: 'dark', hue: 'blue'});
         var backgroundColor = randomColor({luminosity: 'dark', hue: 'blue'});
         var border = 'solid 15px ' + color;
-        var smallBorder = 'solid 4px ' + color;
+        var width = Math.random() * 150;
+        var height = Math.random() * 150;
         var borderRadius = this.state.count;
         return (
-            <AnimatedBox
+            <div
+                className="animated-box"
                 id='mouse-box'
                 key={i}
-                boxStyle={{
-                'border': border,
-                'background': backgroundColor,
-                'borderRadius': borderRadius
+                style={{
+                    'width': this.state.width,
+                    'height': this.state.height,
+                    'border': border,
+                    'background': backgroundColor,
+                    'borderRadius': borderRadius
             }}>
-            </AnimatedBox>
+            </div>
         )
     }
     onMouseMove (event) {
         var grow = this.state.grow;
         var count = this.state.count;
+        var width = this.state.width;
+        var height = this.state.height;
         if (count > 75) {
             grow = true;
         } else if (count < 20) {
@@ -75,32 +83,39 @@ export default class Animation extends Component {
         }
         if (grow == true) {
             count -= 1.5;
+            height -= 2.5;
+            width -= 2.5;
         } else {
             count += 1.5;
+            height += 2;
+            width += 2;
         }
         var mouseBox = document.getElementById('mouse-box');
-        var screenX = event.clientX;
-        var screenY = event.clientY;
+        var screenX = 0;
+        var screenY = 0;
         this.setState({
             screenX: screenX,
             screenY: screenY,
             count: count,
-            grow: grow
+            grow: grow,
+            width: width,
+            height: height
         })
     }
     rainBox () {
 
     }
     componentWillMount () {
-        window.addEventListener('mousemove', this.onMouseMove);
+        //window.addEventListener('mousemove', this.onMouseMove);
+        setInterval(this.onMouseMove, 100);
     }
     componentWillUnmount () {
-        window.removeEventListener('mousemove', this.onMouseMove);
+        //window.removeEventListener('mousemove', this.onMouseMove);
     }
     render () {
         return (
             <div className="animation-container">
-                {this.generateBoxes(200)}
+                {this.generateBoxes(800)}
                 {this.mouseBox()}
             </div>
         )

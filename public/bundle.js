@@ -10216,7 +10216,7 @@ module.exports = ReactPropTypesSecret;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_randomcolor__ = __webpack_require__(184);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_randomcolor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_randomcolor__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_animated_box__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pcss_animation_css__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pcss_animation_css__ = __webpack_require__(169);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pcss_animation_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__pcss_animation_css__);
 
 
@@ -10246,6 +10246,8 @@ var Animation = function (_Component) {
             screenX: 0,
             screenY: 0,
             count: 0,
+            width: 80,
+            height: 80,
             grow: false
         };
         _this.generateBoxes = _this.generateBoxes.bind(_this);
@@ -10284,15 +10286,19 @@ var Animation = function (_Component) {
     }, {
         key: 'mouseBox',
         value: function mouseBox(i) {
-            var color = __WEBPACK_IMPORTED_MODULE_6_randomcolor___default()({ luminosity: 'light', hue: 'blue' });
+            var color = __WEBPACK_IMPORTED_MODULE_6_randomcolor___default()({ luminosity: 'dark', hue: 'blue' });
             var backgroundColor = __WEBPACK_IMPORTED_MODULE_6_randomcolor___default()({ luminosity: 'dark', hue: 'blue' });
             var border = 'solid 15px ' + color;
-            var smallBorder = 'solid 4px ' + color;
+            var width = Math.random() * 150;
+            var height = Math.random() * 150;
             var borderRadius = this.state.count;
-            return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__components_animated_box__["a" /* default */], {
+            return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement('div', {
+                className: 'animated-box',
                 id: 'mouse-box',
                 key: i,
-                boxStyle: {
+                style: {
+                    'width': this.state.width,
+                    'height': this.state.height,
                     'border': border,
                     'background': backgroundColor,
                     'borderRadius': borderRadius
@@ -10303,6 +10309,8 @@ var Animation = function (_Component) {
         value: function onMouseMove(event) {
             var grow = this.state.grow;
             var count = this.state.count;
+            var width = this.state.width;
+            var height = this.state.height;
             if (count > 75) {
                 grow = true;
             } else if (count < 20) {
@@ -10310,17 +10318,23 @@ var Animation = function (_Component) {
             }
             if (grow == true) {
                 count -= 1.5;
+                height -= 2.5;
+                width -= 2.5;
             } else {
                 count += 1.5;
+                height += 2;
+                width += 2;
             }
             var mouseBox = document.getElementById('mouse-box');
-            var screenX = event.clientX;
-            var screenY = event.clientY;
+            var screenX = 0;
+            var screenY = 0;
             this.setState({
                 screenX: screenX,
                 screenY: screenY,
                 count: count,
-                grow: grow
+                grow: grow,
+                width: width,
+                height: height
             });
         }
     }, {
@@ -10329,12 +10343,13 @@ var Animation = function (_Component) {
     }, {
         key: 'componentWillMount',
         value: function componentWillMount() {
-            window.addEventListener('mousemove', this.onMouseMove);
+            //window.addEventListener('mousemove', this.onMouseMove);
+            setInterval(this.onMouseMove, 100);
         }
     }, {
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {
-            window.removeEventListener('mousemove', this.onMouseMove);
+            //window.removeEventListener('mousemove', this.onMouseMove);
         }
     }, {
         key: 'render',
@@ -10342,7 +10357,7 @@ var Animation = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_5_react___default.a.createElement(
                 'div',
                 { className: 'animation-container' },
-                this.generateBoxes(200),
+                this.generateBoxes(800),
                 this.mouseBox()
             );
         }
@@ -10414,7 +10429,7 @@ var AnimatedBox = function (_Component) {
     return AnimatedBox;
 }(__WEBPACK_IMPORTED_MODULE_5_react__["Component"]);
 
-/* harmony default export */ __webpack_exports__["a"] = AnimatedBox;
+/* unused harmony default export */ var _unused_webpack_default_export = AnimatedBox;
 
 /***/ }),
 /* 129 */
@@ -11197,7 +11212,12 @@ for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList'
 }
 
 /***/ }),
-/* 169 */,
+/* 169 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 /* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -23886,15 +23906,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__modules_animation__["a" /* default */], null), document.getElementById('root'));
-
-/***/ }),
-/* 268 */,
-/* 269 */,
-/* 270 */,
-/* 271 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
