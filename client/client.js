@@ -5,7 +5,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Animation from './modules/animation'
+
 ReactDOM.render(
-    <div className="root">BoilerPlate Test</div>,
+    <Animation/>,
     document.getElementById('root')
 );

@@ -1,7 +1,7 @@
 {
-  "name": "ReactExpressBoilerplate",
+  "name": "ReactAnimation",
   "version": "1.0.0",
-  "description": "React-Express Boilerplate",
+  "description": "React Animation",
   "main": "client.js",
   "scripts": {
     "webpack-watch": "webpack -w",
@@ -42,6 +42,7 @@
     "babel-runtime": "^6.22.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "randomcolor": "^0.4.4",
     "react": "^15.3.2",
     "react-addons-css-transition-group": "^15.3.2",
     "react-dom": "^15.3.2"

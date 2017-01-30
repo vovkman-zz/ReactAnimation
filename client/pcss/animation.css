@@ -1,0 +1,30 @@
+@use cssnext;
+:root {
+    --borderSize: 5px;
+    --boxWidth: 150px;
+    --boxHeight: 150px;
+    --flexRow: {
+        display: -webkit-flex;
+        display: flex;
+    };
+    --flexColumn: {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+    };
+}
+
+.animation-container {
+    @apply --flexRow;
+    flex-wrap: wrap;
+    position: absolute;
+}
+
+.animated-box {
+    width: var(--boxWidth);
+    height: var(--boxHeight);
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}

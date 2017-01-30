@@ -1,4 +1,18 @@
 @use cssnext;
-div {
-  font-size: 50px;
+.animation-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    position: absolute;
+}
+.animated-box {
+    width: 150px;
+    height: 150px;
+    padding: 0;
+    margin: 0;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
 }
